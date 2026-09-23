@@ -1,0 +1,3 @@
+export const deploymentTransitions:Record<string,string[]>={QUEUED:['PREPARING','CANCELLED'],PREPARING:['BUILDING','FAILED','CANCELLED'],BUILDING:['VALIDATING','FAILED','CANCELLED'],VALIDATING:['UPLOADING','FAILED'],UPLOADING:['DEPLOYING','FAILED'],DEPLOYING:['HEALTH_CHECK','FAILED'],HEALTH_CHECK:['LIVE','FAILED'],LIVE:['ROLLED_BACK'],FAILED:['QUEUED'],CANCELLED:[],ROLLED_BACK:['LIVE']};
+export function canTransition(from:string,to:string){return deploymentTransitions[from]?.includes(to)??false;}
+export function transition(from:string,to:string){if(!canTransition(from,to))throw new Error(`Invalid deployment transition: ${from} -> ${to}`);return to;}

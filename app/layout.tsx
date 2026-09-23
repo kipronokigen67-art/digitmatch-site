@@ -1,0 +1,4 @@
+import './globals.css';
+import Link from 'next/link';
+export const metadata = { title:'PrimeHost AI — Paste. Build. Host. Live.', description:'Production deployment infrastructure for modern web projects.' };
+export default function RootLayout({children}:{children:React.ReactNode}) { return <html lang="en"><body><header className="border-b border-line bg-ink/90"><div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5"><Link href="/" className="text-xl font-bold tracking-tight">prime<span className="text-cyan">host</span><span className="text-xs text-slate-400"> AI</span></Link><nav className="flex items-center gap-5 text-sm text-slate-300"><Link href="/docs">Docs</Link><Link href="/login">Log in</Link><Link href="/signup" className="rounded-lg bg-cyan px-4 py-2 font-semibold text-ink">Start building</Link></nav></div></header>{children}</body></html> }
